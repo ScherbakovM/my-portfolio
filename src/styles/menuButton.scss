@@ -1,0 +1,155 @@
+@use "./variables" as *;
+
+.menu-button {
+  width: $button-height;
+  height: $button-height;
+  position: relative;
+  cursor: pointer;
+  font-size: 1px;
+  line-height: 1;
+  font-weight: 400;
+  @include no-user-select;
+  will-change: transform;
+
+  &__face {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: $border-radius;
+    @include no-user-select;
+    backface-visibility: hidden;
+    background-color: $dark-gray;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.6);
+    transition: 0.3s ease-in-out;
+
+    .menu-button__line {
+      width: 30%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: $text-black;
+      transition: background-color 0.25s ease-in-out;
+    }
+  }
+
+  &__face.active {
+    rotate: 90deg;
+    background-color: $bg-black;
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
+    .menu-button__line {
+      background-color: $bg-gray;
+    }
+  }
+}
+
+.cta-button {
+  width: max-content;
+  height: max-content;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 20;
+  @include no-user-select;
+  text-decoration: none;
+  transform-origin: center center;
+  cursor: pointer;
+
+  .animated__button {
+    position: relative;
+    @include flex-center;
+    width: 100%;
+    @include button-size;
+    @include black-button;
+    transition: 0.25s ease-in-out all;
+
+    .animated__wrapper {
+      position: relative;
+      display: inline-block;
+      height: $font-button-size-desktop;
+      font-size: $font-button-size-desktop;
+      font-weight: $font-button-weight;
+      overflow: hidden;
+
+      .text,
+      .clone {
+        display: inline-block;
+        white-space: nowrap;
+        will-change: transform;
+        line-height: 1;
+      }
+
+      .clone {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-button {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-button__face {
+  }
+}
+
+@media (max-width: 360px) {
+  .menu-button__face {
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  .cta-button:hover {
+    .animated__button {
+      background-color: $bg-black;
+      color: $bg-gray;
+      box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .menu-button__face:hover {
+    background-color: $bg-black;
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
+
+    .menu-button__line {
+      background-color: $bg-gray;
+      animation: bounce 5s ease-in-out;
+    }
+
+    .menu-button__line:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .menu-button__line:nth-child(2) {
+      animation-delay: 0.33333s;
+    }
+    .menu-button__line:nth-child(3) {
+      animation-delay: 0.66666s;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%,
+  5% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-6px);
+  }
+  15% {
+    transform: translateY(3px);
+  }
+  20%,
+  100% {
+    transform: translateY(0);
+  }
+}

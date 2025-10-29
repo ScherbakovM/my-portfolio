@@ -1,0 +1,325 @@
+@use "./variables" as *;
+
+.menu {
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: max-content;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: $basic-gap;
+
+    &__indent {
+        width: 100%;
+        height: clamp(60px, 3vw, 70px);
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: $bg-black;
+        padding: 20px 20px;
+        height: max-content;
+        transform: translateY(80px);
+        opacity: 0;
+        transition:
+            transform 0.4s $animation-spring 0.1s,
+            opacity 0.3s ease 0.15s;
+        pointer-events: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 1.5rem;
+        pointer-events: none;
+        border-radius: $border-radius;
+        box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
+    }
+
+    &__nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+        transition:
+            transform 0.4s $animation-spring,
+            opacity 0.3s ease 0s;
+    }
+
+    &__link {
+        width: 100%;
+        height: max-content;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 1;
+        border: 2px solid transparent;
+        color: $bg-gray;
+        position: relative;
+        transition: 0.25s ease-in-out all;
+        border-radius: $border-radius;
+
+        .animated__button {
+            position: relative;
+            @include flex-center(flex-center, center, row, 0);
+            width: 100%;
+            height: clamp(60px, 3vw, 70px);
+
+            .animated__wrapper {
+                position: relative;
+                display: flex;
+                align-items: center;
+                height: $font-main-size-desktop;
+                font-size: $font-main-size-desktop;
+                font-weight: $font-main-weight;
+                white-space: pre;
+                overflow: hidden;
+                line-height: 1;
+
+                .text,
+                .clone {
+                    display: inline-block;
+                    will-change: transform;
+                }
+
+                .clone {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+            }
+        }
+    }
+
+    &__link::after {
+        content: "⤶";
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        color: $text-black;
+        transform: translateY(-50%) scale(0);
+        transition: transform 0.3s $animation-spring;
+        transform-origin: center;
+        font-size: $font-main-size-desktop;
+        font-weight: $font-main-weight;
+        line-height: 1;
+    }
+
+    &__social {
+        @include flex-center(space-between, center, row, 0);
+        width: 100%;
+        height: max-content;
+        color: $bg-gray;
+        background-color: $bg-black;
+        border-radius: $border-radius;
+        transform: translateY(80px);
+        opacity: 0;
+        transition:
+            transform 0.4s $animation-spring,
+            opacity 0.3s ease 0.1s;
+        height: auto;
+        padding: 20px 20px;
+        box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
+    }
+
+    &__social.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+        transition:
+            transform 0.4s $animation-spring 0.1s,
+            opacity 0.3s ease 0s;
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__social-icon {
+        width: clamp(38px, 3vw, 46px);
+        height: clamp(38px, 3vw, 46px);
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        transition: all 0.1s cubic-bezier(0, 0, 0.8, 1);
+    }
+
+    &__social-icon.open {
+        animation: scaleOpen 0.3s $animation-spring;
+    }
+
+    &__social-icon:hover {
+        animation: scaleHover 0.3s $animation-spring;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        padding-inline: 20px;
+        padding-top: 30px;
+        background-color: transparent;
+        pointer-events: none;
+        transition: background-color 0.1s linear;
+        gap: 30px;
+
+        &__nav {
+            padding: 50px 25px;
+            gap: 25px;
+        }
+
+        &__link {
+            position: relative;
+
+            .animated__button {
+                .animated__wrapper {
+                    height: clamp(2rem, 10vw, 3.6rem);
+
+                    .text,
+                    .clone {
+                        font-size: clamp(2rem, 10vw, 3.6rem);
+                        font-weight: $font-button-weight;
+                    }
+                }
+            }
+        }
+
+        &__link::before {
+            content: "⤶";
+            position: absolute;
+            right: 0px;
+            background-color: transparent;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: $font-button-size-tablet;
+            font-weight: $font-button-weight;
+            line-height: 1;
+            color: $text-black;
+            text-align: center;
+            user-select: none;
+            transform-origin: center;
+        }
+
+        &__link.active {
+            pointer-events: none;
+        }
+
+        &__link.active::before {
+            content: "•";
+            right: 0px;
+            align-content: center;
+            border-radius: 50%;
+        }
+
+        &__social-icon {
+            width: 76px;
+            height: 76px;
+        }
+    }
+
+    .menu.closing {
+        transition-delay: 0.5s;
+        background-color: transparent;
+        pointer-events: none;
+    }
+
+    .menu.open {
+        background-color: $bg-color;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu {
+        &__link {
+            .animated__button {
+                .animated__wrapper {
+                    height: $font-button-size-mobile;
+
+                    .text,
+                    .clone {
+                        font-size: $font-button-size-mobile;
+                    }
+                }
+            }
+        }
+
+        &__link::before {
+            font-size: $font-button-size-mobile;
+        }
+
+        &__social {
+            height: auto;
+            padding: 20px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .menu {
+        &__link {
+            .animated__button {
+                .animated__wrapper {
+                    height: $font-button-size-small;
+
+                    .text,
+                    .clone {
+                        font-size: $font-button-size-small;
+                    }
+                }
+            }
+        }
+
+        &__link::before {
+            font-size: $font-button-size-small;
+        }
+    }
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+    .menu {
+        &__link:hover {
+            background-color: $bg-gray;
+            padding-left: 20px;
+            color: $text-black;
+            border: solid 2px $border-color;
+        }
+
+        &__link:hover::after {
+            transform: translateY(-50%) scale(1);
+        }
+    }
+}
+
+@keyframes scaleOpen {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleHover {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

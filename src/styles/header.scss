@@ -1,0 +1,154 @@
+@use "./variables" as *;
+
+.header {
+  width: 100%;
+  max-width: 1800px;
+  height: clamp(140px, 10vw, 180px);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 100;
+  transform: translateX(-50%);
+  @include flex-center(center, center, row, 0);
+
+  &__element {
+    cursor: pointer;
+  }
+
+  &__container {
+    @include flex-center(flex-start, center, row, 0);
+    width: 100%;
+    height: max-content;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  &__logo {
+    width: max-content;
+    height: max-content;
+    position: relative;
+    font-size: $font-main-size-desktop;
+    font-weight: $font-main-weight;
+    line-height: 1;
+
+    .animated__box {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      text-decoration: none;
+
+      .text,
+      .clone {
+        color: $text-color;
+      }
+
+      .clone {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    width: max-content;
+    gap: clamp(20px, 5vw, 200px);
+    height: max-content;
+    transform: translateX(-50%);
+  }
+
+  &__link-container {
+    .animated__box-three {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      font-size: $font-main-size-desktop;
+      font-weight: $font-main-weight;
+      line-height: 1;
+      white-space: pre;
+
+      .text {
+        text-decoration: none;
+        color: $text-color;
+      }
+
+      .clone {
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-decoration: none;
+        color: $text-color;
+      }
+    }
+  }
+
+  &__right {
+    right: 0;
+    position: absolute;
+    @include flex-center(space-between, stretch, row, $basic-gap);
+    width: max-content;
+  }
+
+  &__menu-button {
+    position: relative;
+    width: max-content;
+    height: max-content;
+    z-index: 20;
+  }
+}
+
+@media (max-width: 2000px) {
+  .header {
+    width: 100%;
+    max-width: none;
+    padding-inline: $container-padding-inline;
+  }
+}
+
+@media (max-width: 1280px) {
+  .header {
+    &__links {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .header {
+    padding-inline: 20px;
+    &__links {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding-top: 20px;
+    padding-inline: 20px;
+    height: 90px;
+    &__logo {
+      font-size: $font-main-size-tablet;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    &__logo {
+      font-size: $font-main-size-mobile;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .header {
+    &__logo {
+      font-size: $font-main-size-small;
+    }
+  }
+}

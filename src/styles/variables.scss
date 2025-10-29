@@ -1,0 +1,135 @@
+$bg-color: #f2f2f2;
+$text-color: #000000;
+$text-green: #53ffa3;
+$text-color-light: #5d6d7eda;
+$text-black: #000000;
+$text-black-light: #00000099;
+$text-gray: #f2f2f2;
+$text-light-gray: rgba(255, 255, 255, 0.9);
+$bg-gray: #f2f2f2;
+$bg-gray-light: #f9fafc;
+$dark-gray: #d2d2d2;
+$bg-black: #000000;
+$bg-green: #53ffa3;
+$container-padding-inline: clamp(40px, 7vw, 200px);
+$border-color: rgba(0, 0, 0, 0.1);
+$basic-gap: clamp(20px, 3vw, 30px);
+$border-radius: 24px;
+$button-height: clamp(60px, 3vw, 75px);
+$animation-spring: linear(
+  0,
+  0.001 0.2%,
+  0.007 0.5%,
+  0.015 0.8%,
+  0.03 1.2%,
+  0.06 1.9%,
+  0.16 4.1%,
+  0.212 5.3%,
+  0.277 6.9%,
+  0.336 8.5%,
+  0.387 10%,
+  0.437 11.6%,
+  0.484 13.2%,
+  0.528 14.9%,
+  0.574 16.8%,
+  0.617 18.8%,
+  0.656 20.8%,
+  0.692 22.9%,
+  0.727 25.1%,
+  0.758 27.4%,
+  0.787 29.8%,
+  0.814 32.3%,
+  0.837 34.8%,
+  0.859 37.5%,
+  0.879 40.3%,
+  0.897 43.3%,
+  0.912 46.4%,
+  0.927 49.7%,
+  0.939 53.2%,
+  0.95 56.9%,
+  0.968 65%,
+  0.98 74.5%,
+  0.989 85.8%,
+  1
+);
+
+// HTML цвета
+$color-html-bg: #e34f26;
+$color-html-border: #e34f26;
+$color-html-shadow: #ffffff;
+$color-html-after-bg: #e34f2637;
+
+// CSS цвета
+$color-css-bg: #466afd;
+$color-css-border: #3256e7;
+$color-css-after-bg: #466bfd35;
+
+// JS цвета
+$color-js-bg: #f0bf3a;
+$color-js-border: #c6a901;
+$color-js-after-bg: #c6a8013b;
+
+// Code цвета
+$color-code-bg: #4caf50;
+$color-code-border: rgb(97, 167, 32);
+$color-code-after-bg: rgba(120, 186, 59, 0.3);
+
+$color-inset-shadow: #ffffff;
+
+//* Заголовки (logo-part)
+$font-logo-size-desktop: clamp(2.4rem, 3vw, 4rem);
+$font-logo-size-tablet: clamp(2.6rem, 6vw, 4rem);
+$font-logo-size-mobile: clamp(1rem, 10vw, 4rem);
+$font-logo-size-small: clamp(1rem, 10vw, 2rem);
+
+$font-logo-weight-desktop: 450;
+$font-logo-weight-tablet: 400;
+
+//* Основной
+$font-main-size-desktop: clamp(1.2rem, 1.4vw, 1.8rem);
+$font-main-size-tablet: clamp(1.2rem, 1.4vw, 1.8rem);
+$font-main-size-mobile: clamp(1rem, 10vw, 1.2rem);
+$font-main-size-small: clamp(0.7rem, 10vw, 1rem);
+
+$font-main-weight: 300;
+
+//* Кнопки
+$font-button-size-desktop: clamp(1.2rem, 1.4vw, 1.8rem);
+$font-button-size-tablet: clamp(1.2rem, 1.4vw, 1.8rem);
+$font-button-size-mobile: clamp(1rem, 10vw, 1.4rem);
+$font-button-size-small: clamp(0.7rem, 10vw, 1rem);
+
+$font-button-weight: 320;
+
+@mixin no-user-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@mixin button-size {
+  height: $button-height;
+  padding-inline: clamp(20px, 3vw, 40px);
+  min-width: 160px;
+}
+
+@mixin black-button {
+  color: $text-black;
+  background-color: $dark-gray;
+  border-radius: $border-radius;
+  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.6);
+}
+
+@mixin flex-center(
+  $justify: center,
+  $align: center,
+  $direction: row,
+  $gap: null
+) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  @if $gap != null {
+    gap: $gap;
+  }
+}
