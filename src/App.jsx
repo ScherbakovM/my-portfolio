@@ -17,18 +17,29 @@ import useStore from "./store/useStore.js";
 import MenuButton from "./components/menuButton.jsx";
 import AnimatedButton from "./components/AnimatedButton.jsx";
 import { initHoverTextAnimations } from "./utils/HoverAnimation.js";
+import { ReactLenis, useLenis } from "lenis/react";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function AppContent() {
   const location = useLocation();
-  const contentRef = useRef();
   const logoRef = useRef();
   const navRef = useRef();
   const wrapperMenuButtonRef = useRef();
   const buttonRef = useRef(null);
   const isMenuOpen = useStore((state) => state.isMenuOpen);
   const isMenuOpenRef = useRef(isMenuOpen);
+  const lenisRef = useRef();
+
+  useEffect(() => {
+    function update(time) {
+      lenisRef.current?.lenis?.raf(time * 1000);
+    }
+
+    gsap.ticker.add(update);
+
+    return () => gsap.ticker.remove(update);
+  }, []);
 
   useEffect(() => {
     document.fonts.ready.then(() => {
@@ -107,7 +118,12 @@ function AppContent() {
 
   return (
     <>
-      <div ref={contentRef} className="content">
+      <ReactLenis
+        root
+        options={{ autoRaf: false, lerp: 0.3 }}
+        ref={lenisRef}
+        className="content"
+      >
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -115,7 +131,7 @@ function AppContent() {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="*" element={<h1>404 — Страница не найдена</h1>} />
         </Routes>
-      </div>
+      </ReactLenis>
 
       <header className="header">
         <div className="header__container">

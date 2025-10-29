@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const helpCases = [
   {
-    text: "Нужен новый класнный сайт",
+    text: "Нужен новый класcный сайт",
     icon: "👩🏽",
     username: "Анна",
   },
@@ -67,7 +67,7 @@ const HelpBlock = () => {
           trigger: footerRef.current,
           start: "top bottom",
           end: "bottom bottom",
-          scrub: 1,
+          scrub: true,
         },
       });
 
