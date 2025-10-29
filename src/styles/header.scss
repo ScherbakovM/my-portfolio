@@ -2,7 +2,7 @@
 
 .header {
   width: 100%;
-  max-width: 1800px;
+  max-width: 1400px;
   height: clamp(140px, 10vw, 180px);
   position: fixed;
   top: 0;
@@ -101,10 +101,9 @@
   }
 }
 
-@media (max-width: 2000px) {
+@media (max-width: 1600px) {
   .header {
     width: 100%;
-    max-width: none;
     padding-inline: $container-padding-inline;
   }
 }
@@ -131,24 +130,15 @@
     padding-top: 20px;
     padding-inline: 20px;
     height: 90px;
-    &__logo {
-      font-size: $font-main-size-tablet;
-    }
   }
 }
 
 @media (max-width: 480px) {
   .header {
-    &__logo {
-      font-size: $font-main-size-mobile;
-    }
   }
 }
 
 @media (max-width: 360px) {
   .header {
-    &__logo {
-      font-size: $font-main-size-small;
-    }
   }
 }

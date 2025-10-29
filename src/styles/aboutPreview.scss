@@ -6,7 +6,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  max-width: 1800px;
+  max-width: 1400px;
   height: max-content;
   position: relative;
 
@@ -21,7 +21,7 @@
     flex: 1;
     display: flex;
     justify-content: space-between;
-    margin-bottom: clamp(80px, 8vw, 150px);
+    margin-bottom: clamp(10px, 4vw, 150px);
   }
 
   &__title {
@@ -126,17 +126,16 @@
   }
 }
 
-@media (max-width: 2000px) {
+@media (max-width: 1600px) {
   .about-preview {
     width: 100%;
-    max-width: none;
     padding-inline: $container-padding-inline;
   }
 }
 
 @media (max-width: 1100px) {
   .about-preview {
-    padding-inline: 20px;
+    padding-inline: 40px;
     &__links {
       display: none;
     }

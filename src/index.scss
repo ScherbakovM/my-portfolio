@@ -48,6 +48,6 @@ body {
 }
 
 *::selection {
-  background-color: rgba(201, 237, 177, 0.3);
+  background-color: $color-css-after-bg;
   color: $text-black;
 }

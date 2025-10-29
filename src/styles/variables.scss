@@ -65,8 +65,8 @@ $color-css-border: #3256e7;
 $color-css-after-bg: #466bfd35;
 
 // JS цвета
-$color-js-bg: #f0bf3a;
-$color-js-border: #c6a901;
+$color-js-bg: #ffc343;
+$color-js-border: #bc860f;
 $color-js-after-bg: #c6a8013b;
 
 // Code цвета
@@ -86,20 +86,20 @@ $font-logo-weight-desktop: 450;
 $font-logo-weight-tablet: 400;
 
 //* Основной
-$font-main-size-desktop: clamp(1.2rem, 1.4vw, 1.8rem);
-$font-main-size-tablet: clamp(1.2rem, 1.4vw, 1.8rem);
+$font-main-size-desktop: clamp(1.2rem, 1.4vw, 1.4rem);
+$font-main-size-tablet: clamp(1.2rem, 1.4vw, 1.4rem);
 $font-main-size-mobile: clamp(1rem, 10vw, 1.2rem);
 $font-main-size-small: clamp(0.7rem, 10vw, 1rem);
 
-$font-main-weight: 300;
+$font-main-weight: 400;
 
 //* Кнопки
-$font-button-size-desktop: clamp(1.2rem, 1.4vw, 1.8rem);
-$font-button-size-tablet: clamp(1.2rem, 1.4vw, 1.8rem);
+$font-button-size-desktop: clamp(1.2rem, 1.4vw, 1.4rem);
+$font-button-size-tablet: clamp(1.2rem, 1.4vw, 1.4rem);
 $font-button-size-mobile: clamp(1rem, 10vw, 1.4rem);
 $font-button-size-small: clamp(0.7rem, 10vw, 1rem);
 
-$font-button-weight: 320;
+$font-button-weight: 400;
 
 @mixin no-user-select {
   -webkit-user-select: none;

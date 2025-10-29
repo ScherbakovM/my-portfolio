@@ -46,19 +46,12 @@ const HelpBlock = () => {
       gsap.fromTo(
         messagesRef.current,
         {
-          opacity: 0,
-          rotate: -10,
-          y: 500,
-          scale: 0.5,
-          transformOrigin: "left ",
+          y: -700,
+          transformOrigin: "center",
         },
         {
-          opacity: 1,
-          rotate: 0,
           y: 0,
-          scale: 1,
           stagger: { amount: 0.6, from: "start" },
-          ease: "back.out(3)",
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top-=5% bottom",
@@ -121,17 +114,15 @@ const HelpBlock = () => {
             {helpCases.map((item, i) => (
               <div
                 key={i}
-                className="help__phraze"
+                className="help__case"
                 ref={(el) => (messagesRef.current[i] = el)}
                 style={{ zIndex: i }}
               >
-                <div className="help__phraze-inner">
-                  <div className="help__phraze-content">
-                    <div className="help__phraze-avatar">{item.icon}</div>
-                    <div className="help__message">
-                      <div className="help__username">{item.username}</div>
-                      <div className="help__phraze-text">{item.text}</div>
-                    </div>
+                <div className="help__case-content">
+                  <div className="help__case-avatar">{item.icon}</div>
+                  <div className="help__case-message">
+                    <div className="help__case-username">{item.username}</div>
+                    <div className="help__case-text">{item.text}</div>
                   </div>
                 </div>
               </div>
